@@ -1,15 +1,14 @@
 package cl.dsantander.midespensa2023
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(private val productos: MutableList<Producto>) : RecyclerView.Adapter<CustomAdapter.ProductViewHolder>() {
+class ListCompraAdapter (private val productos: MutableList<Producto>) : RecyclerView.Adapter<ListCompraAdapter.ProductViewHolder>(){
 
 
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -18,12 +17,15 @@ class CustomAdapter(private val productos: MutableList<Producto>) : RecyclerView
         var itemDetail: TextView = itemView.findViewById(R.id.item_detail)
         var itemcantidad: TextView = itemView.findViewById(R.id.cantidadTextView)
         var btnEliminarProducto: Button = itemView.findViewById(R.id.btnEliminarProducto)
-
-
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
-        return ProductViewHolder(itemView)
+        return ListCompraAdapter.ProductViewHolder(itemView)
+    }
+
+    override fun getItemCount(): Int {
+        return productos.size
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
@@ -33,9 +35,7 @@ class CustomAdapter(private val productos: MutableList<Producto>) : RecyclerView
         holder.itemImage.setImageResource(producto.imagen) // Asigna la imagen del producto
         holder.itemcantidad.text =  "Cantidad: " + producto.cantidad.toString()//Asigna la cantidad de los productos
 
-        holder.itemView.setOnClickListener{
-            onItemClick?.invoke(producto)
-        }
+
         // Agregar click listener para el botón "Eliminar Producto"
         holder.btnEliminarProducto.setOnClickListener {
             // Eliminar el producto correspondiente cuando se hace clic en el botón de eliminación
@@ -45,17 +45,5 @@ class CustomAdapter(private val productos: MutableList<Producto>) : RecyclerView
         }
     }
 
-    override fun getItemCount(): Int {
-        return productos.size
-    }
-
-    companion object {
-        var onItemClick: ((Producto)->Unit)? = null
-    }
-
-
-
 
 }
-
-

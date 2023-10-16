@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MiDespensa</string>
+    <string name="boton_LP">Hacer una lista de Productos</string>
+    <string name="boton_AgregarProductos">Agregar Producto</string>
 </resources>

@@ -21,5 +21,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Cantidad del producto" />
+    <EditText
+        android:id="@+id/etPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Precio del producto" />
+    <EditText
+        android:id="@+id/etTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tipo de producto" />
+    <EditText
+        android:id="@+id/etMarca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Marca del producto" />
 
 </LinearLayout>

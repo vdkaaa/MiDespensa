@@ -9,27 +9,15 @@
 
     <Button
         android:id="@+id/btnAgregar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Agregar"
+        android:layout_width="113dp"
+        android:layout_height="75dp"
+        android:text="@string/boton_AgregarProductos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.57"
+        app:layout_constraintHorizontal_bias="0.956"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.007" />
-
-    <Button
-        android:id="@+id/btnEliminar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Eliminar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.007" />
+        app:layout_constraintVertical_bias="0.018" />
 
     <TextView
         android:id="@+id/textView"
@@ -55,4 +43,12 @@
        app:layout_constraintTop_toBottomOf="@+id/textView">
 
    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/botonListaComprar"
+        android:layout_width="122dp"
+        android:layout_height="76dp"
+        android:text="@string/boton_LP"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="12dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,13 +8,21 @@ data class Producto(
     val nombre: String,
     val detalle: String,
     val imagen: Int,// Recurso de imagen (puede ser un Int, R.drawable.xxx)
-    var cantidad: Int
+    var cantidad: Int,
+    var precio : Float,
+    val tipo: String,
+    val marca: String
+
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readInt(),
-        parcel.readInt()
+        parcel.readInt(),
+        parcel.readFloat(),
+        parcel.readString()!!,
+        parcel.readString()!!
+
     ) {
     }
 
@@ -23,6 +31,9 @@ data class Producto(
         parcel.writeString(detalle)
         parcel.writeInt(imagen)
         parcel.writeInt(cantidad)
+        parcel.writeFloat(precio)
+        parcel.writeString(tipo)
+        parcel.writeString(marca)
     }
 
     override fun describeContents(): Int {
