@@ -14,13 +14,13 @@ class ListCompraAdapter (private val productos: MutableList<Producto>) : Recycle
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var itemImage: ImageView = itemView.findViewById(R.id.item_image)
         var itemTitle: TextView = itemView.findViewById(R.id.item_title)
-        var itemDetail: TextView = itemView.findViewById(R.id.item_detail)
-        var itemcantidad: TextView = itemView.findViewById(R.id.cantidadTextView)
-        var btnEliminarProducto: Button = itemView.findViewById(R.id.btnEliminarProducto)
+        var itemcantidad: TextView = itemView.findViewById(R.id.CantidadProductos)
+        var btnAgregarCompraProducto: Button = itemView.findViewById(R.id.botonAumentarCompraProductos)
+        var btnAgregarDisminuirProducto: Button = itemView.findViewById(R.id.botonDisminuirCompraProductos)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.cardview_inventario, parent, false)
         return ListCompraAdapter.ProductViewHolder(itemView)
     }
 
@@ -31,17 +31,23 @@ class ListCompraAdapter (private val productos: MutableList<Producto>) : Recycle
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val producto = productos[position]
         holder.itemTitle.text = producto.nombre // Asigna el nombre del producto
-        holder.itemDetail.text = producto.detalle // Asigna los detalles del producto
         holder.itemImage.setImageResource(producto.imagen) // Asigna la imagen del producto
-        holder.itemcantidad.text =  "Cantidad: " + producto.cantidad.toString()//Asigna la cantidad de los productos
-
+        holder.itemcantidad.text =  producto.cantidad.toString()//Asigna la cantidad de los productos
 
         // Agregar click listener para el botón "Eliminar Producto"
-        holder.btnEliminarProducto.setOnClickListener {
+        holder.btnAgregarCompraProducto.setOnClickListener {
             // Eliminar el producto correspondiente cuando se hace clic en el botón de eliminación
-            productos.removeAt(position)
+            producto.cantidad++;
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, productos.size)
+        }
+        holder.btnAgregarDisminuirProducto.setOnClickListener {
+            if(producto.cantidad>0) {
+                // Eliminar el producto correspondiente cuando se hace clic en el botón de eliminación
+                producto.cantidad--;
+                notifyItemRemoved(position)
+                notifyItemRangeChanged(position, productos.size)
+            }
         }
     }
 

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -119,12 +120,12 @@ class MainActivity : AppCompatActivity(){
 
         val btnComprar = findViewById<Button>(R.id.botonListaComprar)
         btnComprar.setOnClickListener {
-        // Crear un Intent para abrir la otra actividad (Reemplaza "OtraActivity" por el nombre de tu otra actividad)
-        val intent = Intent(this, ComprarActivity::class.java)
-        // Agregar la lista productos al Intent
-        intent.putParcelableArrayListExtra("listaProductos", productos)
-        // Iniciar la otra actividad
-        startActivity(intent)
+            // Crear un Intent para abrir la otra actividad (Reemplaza "OtraActivity" por el nombre de tu otra actividad)
+            val intent = Intent(this, ComprarActivity::class.java)
+            // Agregar la lista productos al Intent
+            intent.putParcelableArrayListExtra("listaProductos", productos)
+            // Iniciar la otra actividad
+            startActivity(intent)
         }
 
 
@@ -137,15 +138,36 @@ class MainActivity : AppCompatActivity(){
             }
         }
 
+        // Verificar si se pasaron productosComprados desde ComprarActivity
+        val productosComprados = intent.getParcelableArrayListExtra<Producto>("productosComprados")
+
+        if (productosComprados != null) {
+            for (productoComprado in productosComprados) {
+                // Verificar si la cantidad es mayor que 0
+                if (productoComprado.cantidad > 0) {
+                    val existingProduct = findProductByName(productoComprado.nombre)
+                    if (existingProduct != null) {
+                        // Si el producto ya existe, actualiza la cantidad
+                        existingProduct.cantidad += productoComprado.cantidad
+                    } else {
+                        // Si el producto no existe y tiene una cantidad mayor que 0, agrégalo a la lista
+                        productos.add(productoComprado)
+                    }
+                }
+            }
+            adapter.notifyDataSetChanged()
+        }
 
     }
-
+    private fun findProductByName(productName: String): Producto? {
+        return productos.find { it.nombre == productName }
+    }
 
     private fun agregarProductosIniciales() {
         // Agregar productos iniciales a la lista
-        val producto1 = Producto("Producto 1", "Descripción del Producto 1", R.drawable.ic_launcher_foreground, 4,1000.0f,"tipo","marca")
-        val producto2 = Producto("Producto 2", "Descripción del Producto 2", R.drawable.ic_launcher_foreground,2,1000.0f,"tipo","marca")
-        val producto3 = Producto("Producto 3", "Descripción del Producto 3", R.drawable.ic_launcher_foreground,4,1000.0f,"tipo","marca")
+        val producto1 = Producto("Pan", "Pan amasado", R.drawable.pan_image, 4,1000.0f,"Comida","-")
+        val producto2 = Producto("Tomate", "Tomate Ariqueño", R.drawable.tomate_image,2,600.0f,"Verdura","-")
+        val producto3 = Producto("Avena Instantanea", "Avena instantanea de 700gr", R.drawable.avena_image,4,1000.0f,"Avena","Quaker")
 
         productos.add(producto1)
         productos.add(producto2)
@@ -156,10 +178,5 @@ class MainActivity : AppCompatActivity(){
 
         Log.d("MiDespensa", "Número de productos: ${productos.size}")
     }
-    
-    
-
-
 }
-
 
