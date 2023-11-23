@@ -2,4 +2,20 @@
     <string name="app_name">MiDespensa</string>
     <string name="boton_LP">Hacer una lista de Productos</string>
     <string name="boton_AgregarProductos">Agregar Producto</string>
+    <string name="Correo_Electronico">dsantander17@alumnos.utalca.cl</string>
+    <string name="GuardarySalir">Guardar y Salir</string>
+    <string name="Inventario">Inventario</string>
+    <string name="EliminarProducto">Eliminar Producto</string>
+    <string name="Registrarse">Registrarse</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Correo">Correo Electronico</string>
+    <string name="Contrasena">Contraseña</string>
+    <string name="listadeCompra">Lista de Compra</string>
+    <string name="totalPrecio">Precio Total: $0.00</string>
+    <string name="Lugares"> Lugares de Interes</string>
+    <string name="Comprar"> Comprar</string>
+    <string name="AgregarP"> Agregar Producto</string>
+    <string name="QuitarP"> Quitar Producto</string>
+    <string name="IniciarSe">Iniciar Sesión</string>
+
 </resources>

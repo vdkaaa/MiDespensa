@@ -9,7 +9,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
 
-class CustomAdapter(private val productos: MutableList<Producto>) : RecyclerView.Adapter<CustomAdapter.ProductViewHolder>() {
+class CustomAdapter(private val productos: MutableList<Producto>, private val dbHelper: ProductosDatabaseHelper) : RecyclerView.Adapter<CustomAdapter.ProductViewHolder>() {
 
 
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,10 +38,13 @@ class CustomAdapter(private val productos: MutableList<Producto>) : RecyclerView
         }
         // Agregar click listener para el botón "Eliminar Producto"
         holder.btnEliminarProducto.setOnClickListener {
-            // Eliminar el producto correspondiente cuando se hace clic en el botón de eliminación
+            // Eliminar el producto de la lista en memoria
             productos.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, productos.size)
+
+            // Eliminar el producto de la base de datos
+            dbHelper.deleteProducto(producto)
         }
     }
 

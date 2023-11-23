@@ -1,0 +1,12 @@
+<!-- res/menu/menu_main.xml -->
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="ExtraText">
+
+    <item
+        android:id="@+id/action_add_product"
+        android:title="Añadir Producto"/>
+
+
+</menu>

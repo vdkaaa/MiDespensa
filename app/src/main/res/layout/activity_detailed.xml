@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/botonEliminarProducto"
     android:layout_width="match_parent"
+    android:background="@color/naranja"
     android:layout_height="match_parent"
     tools:context=".DetailedActivity">
+
 
     <ImageView
         android:id="@+id/detailActivityIv"
         android:layout_width="250dp"
         android:layout_height="250dp"
+        android:layout_marginTop="36dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -25,7 +28,7 @@
         android:layout_marginStart="16dp"
         android:text="TextView"
         android:textColor="@color/black"
-        android:textSize="24dp"
+        android:textSize="36dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,17 +67,18 @@
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailActivityIv"
-        app:layout_constraintVertical_bias="0.594" />
+        app:layout_constraintVertical_bias="0.569" />
 
     <Button
         android:id="@+id/botonCantidadmas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
-        android:text="Button"
+        android:text="@string/AgregarP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.533"
+        android:backgroundTint="@color/black"
         app:layout_constraintStart_toEndOf="@+id/botonCantidadmenos" />
 
     <Button
@@ -82,9 +86,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
-        android:text="Button"
+        android:text="@string/QuitarP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/black"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -92,12 +97,14 @@
         android:id="@+id/botonGuardarSalir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="656dp"
-        android:text="Guardar y Salir"
+        android:backgroundTint="@color/black"
+        android:text="@string/GuardarySalir"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintHorizontal_bias="0.42"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.959" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

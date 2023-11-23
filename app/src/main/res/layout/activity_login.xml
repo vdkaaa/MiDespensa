@@ -1,51 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- res/layout/activity_login.xml -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/naranja"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".Login">
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="300dp"
+        android:layout_height="199dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/ic_launcher_foreground"
-        android:contentDescription="@null" />
+        android:contentDescription="@null"
+        android:src="@drawable/a3f9d7db9ef99893e63623336c1fa1b0" />
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Correo Electrónico"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="#FDFDFC"
+        android:backgroundTint="#009688"
+        android:hint="@string/Correo"
+        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="16dp" />
+        android:textColor="@color/black"
+        android:textColorHint="#676767"
+        tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Contraseña"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="#FFEB3B"
+        android:backgroundTint="#009688"
+        android:hint="@string/Contrasena"
+        android:importantForAutofill="no"
         android:inputType="textPassword"
-        android:layout_marginTop="8dp" />
+        android:textColor="@color/black"
+        android:textColorHint="#676767"
+        tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
 
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/IniciarSe"
+        tools:ignore="VisualLintButtonSize" />
 
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrarse"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/Registrarse" />
 
 </LinearLayout>

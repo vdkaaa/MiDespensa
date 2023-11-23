@@ -46,9 +46,14 @@ class DetailedActivity : AppCompatActivity() {
                     cantidadView.text = "Cantidad: " + producto.cantidad.toString()
                 }
             }
-            btnGuardarSalir.setOnClickListener{
+            btnGuardarSalir.setOnClickListener {
+                // Actualizar el producto en la base de datos
+                val dbHelper = ProductosDatabaseHelper(this)
+                dbHelper.updateProducto(producto)
+
+                // Regresar a MainActivity
                 val intent = Intent(this, MainActivity::class.java)
-                intent.putExtra("producto",producto)
+                intent.putExtra("producto", producto)
                 finish()
                 startActivity(intent)
             }
