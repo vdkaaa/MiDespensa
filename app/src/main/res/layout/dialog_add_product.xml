@@ -21,16 +21,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Cantidad del producto" />
+
     <EditText
         android:id="@+id/etPrecio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Precio del producto" />
-    <EditText
-        android:id="@+id/etTipo"
+
+    <Spinner
+        android:id="@+id/spinnerTipo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tipo de producto" />
+        android:layout_marginTop="8dp"
+        android:contextClickable="false"
+        android:entries="@array/tipos_de_producto"
+        android:prompt="@string/SeleccionarTipo" />
+
     <EditText
         android:id="@+id/etMarca"
         android:layout_width="match_parent"

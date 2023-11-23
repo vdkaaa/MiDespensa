@@ -8,8 +8,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity(){
     private val productos = ArrayList<Producto>() // Lista de productos
     private lateinit var adapter: CustomAdapter
     private lateinit var dbHelper: ProductosDatabaseHelper
+
 
 
 
@@ -51,15 +54,18 @@ class MainActivity : AppCompatActivity(){
         adapter = CustomAdapter(productos,dbHelper)
         recyclerView.adapter = adapter
 
+        val filtroTipo = intent.getStringExtra("filtroTipo")
+        Log.d("MiDespensa", "Filtro tipo en MainActivity: $filtroTipo")
 
-
-        cargarProductosDesdeDatabase()
+        Log.d("MiDespensa", "Productos cargados: $productos")
+        cargarProductosDesdeDatabase(filtroTipo)
 
         CustomAdapter.onItemClick = {
             val intent = Intent(this, DetailedActivity::class.java)
             intent.putExtra("producto", it)
             startActivityForResult(intent, REQUEST_CODE_DETAILED_ACTIVITY)
         }
+        Log.d("MiDespensa", "Productos cargados: $productos")
         val producto = intent.getParcelableExtra<Producto>("producto")
         if (producto != null) {
             for (prod in productos) {
@@ -87,11 +93,28 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
-    private fun cargarProductosDesdeDatabase() {
-        val productos = dbHelper.readProductos()
+    private fun cargarProductosDesdeDatabase(filtroTipo: String? = null) {
+        println("Filtro tipo: $filtroTipo")
+
+        val tipoProducto: TipoProducto? = filtroTipo?.let {
+            Log.d("MiDespensa", "Tipo seleccionado: $it")
+            TipoProducto.values().find { tipo -> tipo.name == it }
+        }
+
+        val productos = if (tipoProducto != null) {
+            dbHelper.readProductosByTipo(tipoProducto)
+        } else {
+            dbHelper.readProductos()
+        }
+
+        println("Productos cargados: $productos")
+
+        this.productos.clear()
         this.productos.addAll(productos)
         adapter.notifyDataSetChanged()
     }
+
+
 
     private fun guardarProductoEnDatabase(producto: Producto) {
         dbHelper.insertProducto(producto)
@@ -103,8 +126,18 @@ class MainActivity : AppCompatActivity(){
         val etDescripcion = dialogView.findViewById<EditText>(R.id.etDescripcion)
         val etCantidad = dialogView.findViewById<EditText>(R.id.etCantidad)
         val etPrecio = dialogView.findViewById<EditText>(R.id.etPrecio)
-        val etTipo = dialogView.findViewById<EditText>(R.id.etTipo)
+        val spinnerTipo = dialogView.findViewById<Spinner>(R.id.spinnerTipo)
         val etMarca = dialogView.findViewById<EditText>(R.id.etMarca)
+
+        // Configurar el adaptador para el Spinner con las opciones de tipo de producto
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.tipos_de_producto,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerTipo.adapter = adapter
+        }
 
         val dialog = AlertDialog.Builder(this)
             .setTitle("Agregar Producto")
@@ -119,12 +152,7 @@ class MainActivity : AppCompatActivity(){
                 } else {
                     0.0f
                 }
-                val tipoProductoStr = etTipo.text.toString()
-                val tipoProducto = try {
-                    TipoProducto.valueOf(tipoProductoStr)
-                } catch (e: IllegalArgumentException) {
-                    TipoProducto.Vegetales // Valor predeterminado si no se reconoce el tipo
-                }
+                val tipoProducto = TipoProducto.valueOf(spinnerTipo.selectedItem.toString())
                 val MarcaProducto = etMarca.text.toString()
 
                 // Agregar un nuevo producto a la lista y a la base de datos
@@ -140,7 +168,6 @@ class MainActivity : AppCompatActivity(){
                     )
                     productos.add(nuevoProducto)
                     adapter.notifyItemInserted(productos.size - 1)
-                    Log.d("MiDespensa", "Tamaño de productos: ${productos.size}")
 
                     // Guardar el producto en la base de datos
                     guardarProductoEnDatabase(nuevoProducto)
@@ -154,6 +181,7 @@ class MainActivity : AppCompatActivity(){
 
         dialog.show()
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

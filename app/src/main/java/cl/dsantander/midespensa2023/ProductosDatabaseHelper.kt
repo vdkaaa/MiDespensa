@@ -102,4 +102,40 @@ class ProductosDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
         db.delete(TABLE_PRODUCTOS, "$COLUMN_NOMBRE = ?", arrayOf(producto.nombre))
         db.close()
     }
+
+    @SuppressLint("Range")
+    fun readProductosByTipo(tipo: TipoProducto): List<Producto> {
+        val productos = ArrayList<Producto>()
+        val db = readableDatabase
+        val columns = arrayOf(
+            COLUMN_NOMBRE,
+            COLUMN_DESCRIPCION,
+            COLUMN_CANTIDAD,
+            COLUMN_PRECIO,
+            COLUMN_TIPO,
+            COLUMN_MARCA
+        )
+        val selection = "$COLUMN_TIPO = ?"
+        val selectionArgs = arrayOf(tipo.name)
+        val cursor: Cursor = db.query(TABLE_PRODUCTOS, columns, selection, selectionArgs, null, null, null)
+
+        while (cursor.moveToNext()) {
+            val nombre = cursor.getString(cursor.getColumnIndex(COLUMN_NOMBRE))
+            val descripcion = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPCION))
+            val cantidad = cursor.getInt(cursor.getColumnIndex(COLUMN_CANTIDAD))
+            val precio = cursor.getFloat(cursor.getColumnIndex(COLUMN_PRECIO))
+            val marca = cursor.getString(cursor.getColumnIndex(COLUMN_MARCA))
+
+
+            val producto = Producto(nombre, descripcion, R.drawable.ic_launcher_foreground, cantidad, precio, tipo, marca)
+            productos.add(producto)
+        }
+
+        cursor.close()
+        db.close()
+
+        return productos
+    }
+
+
 }

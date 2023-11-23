@@ -17,5 +17,12 @@
     <string name="AgregarP"> Agregar Producto</string>
     <string name="QuitarP"> Quitar Producto</string>
     <string name="IniciarSe">Iniciar Sesión</string>
+    <string name="SeleccionarTipo">Seleccionar Tipo</string>
 
+    <string-array name="tipos_de_producto">
+        <item>Vegetales</item>
+        <item>Frutas</item>
+        <item>Bebestibles</item>
+        <item>Aseo</item>
+    </string-array>
 </resources>

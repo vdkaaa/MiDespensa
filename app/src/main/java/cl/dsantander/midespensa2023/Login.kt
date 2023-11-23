@@ -40,7 +40,7 @@ class Login : AppCompatActivity() {
 
             if (usuario != null) {
                 // Credenciales válidas, inicia sesión y redirige al usuario a la pantalla principal.
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, OrdenProductosActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
