@@ -1,5 +1,6 @@
 package cl.dsantander.midespensa2023
 
+import ProductosDatabaseHelper
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -9,11 +10,13 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+//import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import android.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -77,21 +80,7 @@ class MainActivity : AppCompatActivity(){
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_add_product -> {
-                // Lógica para manejar la opción "Añadir Producto" en el Toolbar
-                mostrarDialogoAgregarProducto()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 
     private fun cargarProductosDesdeDatabase(filtroTipo: String? = null) {
         println("Filtro tipo: $filtroTipo")
@@ -101,18 +90,21 @@ class MainActivity : AppCompatActivity(){
             TipoProducto.values().find { tipo -> tipo.name == it }
         }
 
-        val productos = if (tipoProducto != null) {
+        val productosFromDb = if (tipoProducto != null) {
             dbHelper.readProductosByTipo(tipoProducto)
         } else {
             dbHelper.readProductos()
         }
 
-        println("Productos cargados: $productos")
+        println("Productos cargados: $productosFromDb")
 
-        this.productos.clear()
-        this.productos.addAll(productos)
+        // Clear the productos list and add items from the database
+        productos.clear()
+        productos.addAll(productosFromDb)
+        adapter.originalProductos = productosFromDb.toList()  // Update the originalProductos list
         adapter.notifyDataSetChanged()
     }
+
 
 
 
@@ -155,12 +147,12 @@ class MainActivity : AppCompatActivity(){
                 val tipoProducto = TipoProducto.valueOf(spinnerTipo.selectedItem.toString())
                 val MarcaProducto = etMarca.text.toString()
 
-                // Agregar un nuevo producto a la lista y a la base de datos
                 if (nombreProducto.isNotEmpty() && cantidadProducto > 0) {
                     val nuevoProducto = Producto(
+                        1,
                         nombreProducto,
                         descripcionProducto,
-                        R.drawable.ic_launcher_foreground,
+                        R.drawable.letras_logo,
                         cantidadProducto,
                         precioProducto,
                         tipoProducto,
@@ -169,8 +161,13 @@ class MainActivity : AppCompatActivity(){
                     productos.add(nuevoProducto)
                     adapter.notifyItemInserted(productos.size - 1)
 
+                    // Force an immediate UI update
+                    adapter.notifyDataSetChanged()
+
                     // Guardar el producto en la base de datos
                     guardarProductoEnDatabase(nuevoProducto)
+                    // Recrear la actividad para reflejar el cambio
+                    recreate()
                 } else {
                     // Manejar un caso de entrada no válida
                     Toast.makeText(this, "Ingrese datos válidos", Toast.LENGTH_SHORT).show()
@@ -200,6 +197,56 @@ class MainActivity : AppCompatActivity(){
             }
         }
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        adapter.notifyDataSetChanged()
+        val searchItem = menu?.findItem(R.id.action_search)
+        val searchView = searchItem?.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    adapter.setFilter(newText)
+                }
+                return true
+            }
+        })
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_sort_quantity -> {
+                // Lógica para ordenar por cantidad
+                productos.sortBy { it.cantidad }
+                adapter.notifyDataSetChanged()
+                true
+            }
+            R.id.action_sort_name -> {
+                // Lógica para ordenar por nombre
+                productos.sortBy { it.nombre }
+                adapter.notifyDataSetChanged()
+                true
+            }
+            R.id.action_add_product -> {
+                // Lógica para manejar la opción "Añadir Producto" en el Toolbar
+                mostrarDialogoAgregarProducto()
+                true
+            }
+            R.id.movimientos_action -> {
+                // Lógica para manejar la acción de historial de movimientos
+                // Abre la actividad de historial de movimientos
+                val intent = Intent(this, MovimientosActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
     companion object {
         const val REQUEST_CODE_DETAILED_ACTIVITY = 1
     }
@@ -208,5 +255,8 @@ class MainActivity : AppCompatActivity(){
         dbHelper.close()
         super.onDestroy()
     }
+
+
+
 }
 

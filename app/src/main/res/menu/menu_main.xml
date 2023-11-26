@@ -6,7 +6,30 @@
 
     <item
         android:id="@+id/action_add_product"
-        android:title="Añadir Producto"/>
+        android:title="@string/AñadirProducto"/>
+    <item
+        android:id="@+id/movimientos_action"
+        android:title="@string/Historial"/>
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
 
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@android:drawable/ic_menu_sort_alphabetically"
+        android:title="Sort"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/action_sort_quantity"
+                android:title="@string/OrdenarCantidad" />
+            <item
+                android:id="@+id/action_sort_name"
+                android:title="@string/OrdenarNombre" />
+        </menu>
+    </item>
 
 </menu>

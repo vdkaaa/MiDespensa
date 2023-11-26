@@ -4,15 +4,17 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Producto(
-    val nombre: String,
+    val id: Long, // Id
+    var nombre: String,
     val detalle: String,
     val imagen: Int,
     var cantidad: Int,
     var precio: Float,
-    val tipo: TipoProducto, // Cambiado a la enumeración TipoProducto
+    val tipo: TipoProducto,
     val marca: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readLong(),
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readInt(),
@@ -23,6 +25,7 @@ data class Producto(
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeLong(id)
         parcel.writeString(nombre)
         parcel.writeString(detalle)
         parcel.writeInt(imagen)

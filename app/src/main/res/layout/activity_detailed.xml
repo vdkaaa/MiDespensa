@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/botonEliminarProducto"
     android:layout_width="match_parent"
-    android:background="@color/naranja"
     android:layout_height="match_parent"
+    android:background="@color/naranja"
     tools:context=".DetailedActivity">
 
 
@@ -32,13 +32,13 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailActivityIv"
-        app:layout_constraintVertical_bias="0.187" />
+        app:layout_constraintVertical_bias="0.017" />
 
     <TextView
-        android:id="@+id/item_detail"
+        android:id="@+id/precioProducto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -74,11 +74,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/black"
         android:text="@string/AgregarP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
-        android:backgroundTint="@color/black"
+        app:layout_constraintHorizontal_bias="0.613"
         app:layout_constraintStart_toEndOf="@+id/botonCantidadmenos" />
 
     <Button
@@ -86,11 +86,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/black"
         android:text="@string/QuitarP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/black"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -101,10 +101,19 @@
         android:text="@string/GuardarySalir"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.42"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.959" />
+        app:layout_constraintVertical_bias="0.961" />
+
+    <EditText
+        android:id="@+id/etNuevoPrecio"
+        android:layout_width="319dp"
+        android:layout_height="48dp"
+        android:hint="@string/NuevoPre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailActivityTv" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
