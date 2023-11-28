@@ -19,7 +19,7 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Agrega usuarios a la lista (esto es solo un ejemplo, en una aplicación real, los usuarios se agregarían durante el registro).
+
         listaUsuarios.add(Usuario("Usuario1", "usuario1", "demo1"))
         listaUsuarios.add(Usuario("Usuario2", "usuario2", "demo2"))
 
@@ -40,7 +40,7 @@ class Login : AppCompatActivity() {
         }
 
         buttonRegister.setOnClickListener {
-            // Abre la actividad de registro cuando se presiona el botón "Registrarse".
+
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
         }
@@ -48,7 +48,7 @@ class Login : AppCompatActivity() {
             val email = editTextEmail.text.toString()
             val password = editTextPassword.text.toString()
 
-            // Verifica las credenciales ingresadas por el usuario utilizando la lista de usuarios actualizada.
+
             val usuario = listaUsuarios.find { it.verificaCredenciales(email, password) }
 
             if (usuario != null) {

@@ -38,9 +38,7 @@ class MovimientosActivity : AppCompatActivity() {
     }
 
     private fun obtenerMovimientosDesdeBD(): List<String> {
-        // Aquí deberías obtener los movimientos reales desde la base de datos
-        // y devolver una lista de cadenas representando cada movimiento.
-        // Estas cadenas se mostrarán en el ListView.
+
         val dbHelper = ProductosDatabaseHelper(this)
         val movimientos = dbHelper.readAllMovimientos()
 

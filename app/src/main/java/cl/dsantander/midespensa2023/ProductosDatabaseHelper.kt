@@ -65,10 +65,10 @@ class ProductosDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
 
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        // Puedes implementar la lógica de actualización si es necesario
+
     }
 
-    // Función para leer todos los productos de la base de datos
+
     @SuppressLint("Range")
     fun readProductos(): List<Producto> {
         val productos = ArrayList<Producto>()

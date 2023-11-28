@@ -98,10 +98,10 @@ class MainActivity : AppCompatActivity(){
 
         println("Productos cargados: $productosFromDb")
 
-        // Clear the productos list and add items from the database
+
         productos.clear()
         productos.addAll(productosFromDb)
-        adapter.originalProductos = productosFromDb.toList()  // Update the originalProductos list
+        adapter.originalProductos = productosFromDb.toList()
         adapter.notifyDataSetChanged()
     }
 
@@ -221,24 +221,24 @@ class MainActivity : AppCompatActivity(){
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_sort_quantity -> {
-                // Lógica para ordenar por cantidad
+
                 productos.sortBy { it.cantidad }
                 adapter.notifyDataSetChanged()
                 true
             }
             R.id.action_sort_name -> {
-                // Lógica para ordenar por nombre
+
                 productos.sortBy { it.nombre }
                 adapter.notifyDataSetChanged()
                 true
             }
             R.id.action_add_product -> {
-                // Lógica para manejar la opción "Añadir Producto" en el Toolbar
+
                 mostrarDialogoAgregarProducto()
                 true
             }
             R.id.movimientos_action -> {
-                // Lógica para manejar la acción de historial de movimientos
+
                 // Abre la actividad de historial de movimientos
                 val intent = Intent(this, MovimientosActivity::class.java)
                 startActivity(intent)

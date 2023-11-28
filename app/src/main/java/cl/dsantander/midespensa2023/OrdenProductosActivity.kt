@@ -20,7 +20,6 @@ class OrdenProductosActivity : AppCompatActivity() {
         listViewOpciones.adapter = adapter
 
         listViewOpciones.setOnItemClickListener { _, _, position, _ ->
-            // Al hacer clic en una opción, abrir MainActivity filtrando por el tipo seleccionado
             val tipoSeleccionado = opciones[position]
             Log.d("MiDespensa", "Tipo seleccionado: $tipoSeleccionado")
 
