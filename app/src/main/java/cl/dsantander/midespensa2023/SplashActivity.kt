@@ -42,7 +42,7 @@ class SplashActivity : AppCompatActivity() {
         animationSet.addAnimation(scaleUp)
 
 
-        val imageView = findViewById<ImageView>(R.id.imageBG)
+        val imageView = findViewById<ImageView>(R.id.imagenlogo)
 
         fadeIn.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {

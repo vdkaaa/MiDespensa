@@ -4,17 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/verdeAqua"
     tools:context=".OrdenProductosActivity">
 
     <ListView
         android:id="@+id/listViewOpciones"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="383dp"
+        android:layout_height="248dp"
+        android:layout_marginBottom="184dp"
+        android:background="@color/naranja"
+        android:choiceMode="singleChoice"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="0.5dp"
         android:padding="16dp"
-        android:background="@android:color/background_light"
-        android:choiceMode="singleChoice" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/tituloOrden"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/listViewOpciones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.655" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="177dp"
+        android:layout_height="136dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logo_midespensa" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

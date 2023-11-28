@@ -8,25 +8,25 @@
         android:id="@+id/etNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre del producto" />
+        android:hint="@string/Nombre_Producto" />
 
     <EditText
         android:id="@+id/etDescripcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Descripción del producto" />
+        android:hint="@string/Descripcion_Producto" />
 
     <EditText
         android:id="@+id/etCantidad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Cantidad del producto" />
+        android:hint="@string/Cantidad_Producto_nuevo" />
 
     <EditText
         android:id="@+id/etPrecio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Precio del producto" />
+        android:hint="@string/Precio_Producto" />
 
     <Spinner
         android:id="@+id/spinnerTipo"
@@ -41,6 +41,6 @@
         android:id="@+id/etMarca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Marca del producto" />
+        android:hint="@string/Marca_Producto" />
 
 </LinearLayout>

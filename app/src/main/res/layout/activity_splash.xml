@@ -7,35 +7,37 @@
     tools:context=".SplashActivity">
 
     <ImageView
-        android:id="@+id/imageBG"
-        android:layout_width="497dp"
-        android:layout_height="907dp"
+        android:id="@+id/imagenBg"
+        android:layout_width="949dp"
+        android:layout_height="1500dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/fondo_background" />
-
-    <ImageView
-        android:id="@+id/imageLetras"
-        android:layout_width="421dp"
-        android:layout_height="828dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/fondo_log2" />
+        app:layout_constraintVertical_bias="0.444"
+        app:srcCompat="@drawable/fridgepixel" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Correo_Electronico"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.889" />
+        app:layout_constraintVertical_bias="0.941" />
+
+    <ImageView
+        android:id="@+id/imagenlogo"
+        android:layout_width="279dp"
+        android:layout_height="403dp"
+        android:layout_marginBottom="352dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logo_midespensa" />
 </androidx.constraintlayout.widget.ConstraintLayout>

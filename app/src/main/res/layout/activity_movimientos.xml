@@ -1,0 +1,33 @@
+<!-- res/layout/activity_movimientos.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/naranja"
+    android:backgroundTint="@color/naranja"
+    tools:context=".MovimientosActivity">
+
+    <Button
+        android:id="@+id/btnBackToMain"
+        android:layout_width="319dp"
+        android:layout_height="58dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="624dp"
+        android:layout_marginEnd="47dp"
+        android:backgroundTint="@color/verdeAqua"
+        android:text="@string/btnRegresarMenu"
+        android:textColorLink="@color/verdeAqua" />
+
+    <ListView
+        android:id="@+id/listViewMovimientos"
+        android:layout_width="match_parent"
+        android:layout_height="588dp"
+        android:background="@color/naranja"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        android:padding="16dp" />
+
+</RelativeLayout>

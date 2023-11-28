@@ -19,6 +19,31 @@
     <string name="IniciarSe">Iniciar Sesión</string>
     <string name="SeleccionarTipo">Seleccionar Tipo</string>
 
+    <!-- activity_detailed -->
+    <string name="NuevoPre">Nuevo Precio</string>
+
+    <!-- activity_movimientos -->
+    <string name="btnRegresarMenu">Regresar al Menu</string>
+
+    <!-- activity_orden_productos -->
+    <string name="tituloOrden"> Tu inventario se organiza por las siguientes secciones:</string>
+
+    <!-- CARD_LAYOUT -->
+    <string name="Nombre_Producto">Nombre del Producto</string>
+    <string name="Descripcion_Producto">Descripción del Producto</string>
+    <string name="Cantidad_Producto">Cantidad: </string>
+    <string name="Cantidad_Producto_nuevo">Cantidad del Producto </string>
+
+
+    <string name="Precio_Producto">Precio del producto </string>
+    <string name="Marca_Producto"> Marca del producto</string>
+    <string name="AñadirProducto"> Añadir Producto</string>
+    <string name="Historial"> Historial / Movimientos</string>
+    <string name="Idioma"> Elige un idioma:  </string>
+    <string name="OrdenarCantidad">Ordenar Por Cantidad</string>
+    <string name="OrdenarNombre">Ordenar Por Nombre</string>
+    <string name="descripcion_bandera">Ingles</string>
+    <string name="descripcion_banderaES">Español</string>
     <string-array name="tipos_de_producto">
         <item>Vegetales</item>
         <item>Frutas</item>

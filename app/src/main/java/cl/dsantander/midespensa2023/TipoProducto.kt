@@ -4,6 +4,10 @@ enum class TipoProducto {
     Vegetales,
     Frutas,
     Bebestibles,
-    Aseo
+    Aseo,
+    Vegetables,
+    Fruits,
+    Beverages,
+    PersonalCare
 
 }

@@ -13,7 +13,7 @@ class OrdenProductosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_orden_productos)
 
-        val opciones = arrayOf("Vegetales", "Frutas", "Bebestibles", "Aseo")
+        val opciones = resources.getStringArray(R.array.tipos_de_producto)
 
         val listViewOpciones: ListView = findViewById(R.id.listViewOpciones)
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, opciones)

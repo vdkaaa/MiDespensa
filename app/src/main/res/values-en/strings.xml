@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string name="app_name">MiDespensa</string>
+        <string name="boton_LP">Make a Product List</string>
+        <string name="boton_AgregarProductos">Add Product</string>
+        <string name="Correo_Electronico">dsantander17@students.utalca.cl</string>
+        <string name="GuardarySalir">Save and Exit</string>
+        <string name="Inventario">Inventory</string>
+        <string name="EliminarProducto">Delete Product</string>
+        <string name="Registrarse">Sign Up</string>
+        <string name="Nombre">Name</string>
+        <string name="Correo">Email</string>
+        <string name="Contrasena">Password</string>
+        <string name="listadeCompra">Shopping List</string>
+        <string name="totalPrecio">Total Price: $0.00</string>
+        <string name="Lugares">Places of Interest</string>
+        <string name="Comprar">Buy</string>
+        <string name="AgregarP">Add Product</string>
+        <string name="QuitarP">Remove Product</string>
+        <string name="IniciarSe">Log In</string>
+        <string name="SeleccionarTipo">Select Type</string>
+
+        <!-- activity_detailed -->
+        <string name="NuevoPre">New Price</string>
+
+        <!-- activity_movimientos -->
+        <string name="btnRegresarMenu">Back to Menu</string>
+
+        <!-- activity_orden_productos -->
+        <string name="tituloOrden">Your inventory is organized by the following sections:</string>
+
+        <!-- CARD_LAYOUT -->
+        <string name="Nombre_Producto">Product Name</string>
+        <string name="Descripcion_Producto">Product Description</string>
+        <string name="Cantidad_Producto">Quantity: </string>
+        <string name="Cantidad_Producto_nuevo">Product Quantity </string>
+
+        <string name="Precio_Producto">Product Price </string>
+        <string name="Marca_Producto">Product Brand</string>
+        <string name="OrdenarCantidad">Sort by Quantity</string>
+        <string name="OrdenarNombre">Sort by Name</string>
+        <string name="AñadirProducto"> Add new Item</string>
+        <string name="Historial"> History / Transactions</string>
+
+        <string name="Idioma">Choose a Language: </string>
+    <string name="descripcion_bandera">English</string>
+    <string name="descripcion_banderaES">Español</string>
+        <string-array name="tipos_de_producto">
+            <item>Vegetables</item>
+            <item>Fruits</item>
+            <item>Beverages</item>
+            <item>PersonalCare</item>
+        </string-array>
+    </resources>
